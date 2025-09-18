@@ -10,21 +10,42 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Todos los campos obligatorios deben ser completados" }, { status: 400 })
     }
 
+    // Validar que las variables de entorno estén configuradas
+    if (!process.env.ZOHO_EMAIL || !process.env.ZOHO_PASSWORD) {
+      console.error("Variables de entorno no configuradas:", {
+        email: !!process.env.ZOHO_EMAIL,
+        password: !!process.env.ZOHO_PASSWORD,
+      })
+      return NextResponse.json({ error: "Configuración del servidor incompleta" }, { status: 500 })
+    }
+
     // Configurar el transportador de correo con Zoho Mail
     const transporter = nodemailer.createTransporter({
       host: "smtp.zoho.com",
       port: 587,
-      secure: false, // true para 465, false para otros puertos
+      secure: false,
       auth: {
         user: process.env.ZOHO_EMAIL,
         pass: process.env.ZOHO_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     })
+
+    // Verificar la conexión SMTP
+    try {
+      await transporter.verify()
+      console.log("Conexión SMTP verificada exitosamente")
+    } catch (verifyError) {
+      console.error("Error de verificación SMTP:", verifyError)
+      return NextResponse.json({ error: "Error de configuración de correo" }, { status: 500 })
+    }
 
     // Configurar el correo para el administrador
     const adminMailOptions = {
       from: process.env.ZOHO_EMAIL,
-      to: "victor@maestrodelmueble.cl",
+      to: process.env.ZOHO_EMAIL, // Enviar al mismo correo configurado
       subject: `Nueva consulta de ${nombre} - El Maestro del Mueble`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
@@ -125,13 +146,38 @@ export async function POST(request: NextRequest) {
       `,
     }
 
-    // Enviar ambos correos
+    // Enviar correo al administrador
+    console.log("Enviando correo al administrador...")
     await transporter.sendMail(adminMailOptions)
+    console.log("Correo al administrador enviado exitosamente")
+
+    // Enviar correo de confirmación al cliente
+    console.log("Enviando correo de confirmación al cliente...")
     await transporter.sendMail(clientMailOptions)
+    console.log("Correo de confirmación enviado exitosamente")
 
     return NextResponse.json({ message: "Correos enviados exitosamente" }, { status: 200 })
   } catch (error) {
-    console.error("Error al enviar correo:", error)
-    return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 })
+    console.error("Error detallado al enviar correo:", error)
+
+    // Proporcionar más información sobre el error
+    let errorMessage = "Error interno del servidor"
+    if (error instanceof Error) {
+      if (error.message.includes("Invalid login")) {
+        errorMessage = "Error de autenticación con el servidor de correo"
+      } else if (error.message.includes("ECONNREFUSED")) {
+        errorMessage = "No se pudo conectar al servidor de correo"
+      } else if (error.message.includes("timeout")) {
+        errorMessage = "Tiempo de espera agotado al conectar con el servidor de correo"
+      }
+    }
+
+    return NextResponse.json(
+      {
+        error: errorMessage,
+        details: process.env.NODE_ENV === "development" ? error.message : undefined,
+      },
+      { status: 500 },
+    )
   }
 }
