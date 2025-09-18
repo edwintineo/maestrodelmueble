@@ -204,7 +204,7 @@ export default function Footer() {
               <div className="space-y-4 mb-8">
                 <motion.div whileHover={{ x: 5 }} className="flex items-center space-x-3 text-gray-300">
                   <Phone className="w-5 h-5 text-orange-500" />
-                  <span>+56 9 7202 3868</span> {/* Updated phone number */}
+                  <span>+56 9 22596802</span> {/* Updated phone number */}
                 </motion.div>
 
                 <motion.div whileHover={{ x: 5 }} className="flex items-center space-x-3 text-gray-300">

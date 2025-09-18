@@ -1,12 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Navigation from "@/components/navigation"
 import { Toaster } from "@/components/ui/toaster"
 import Footer from "@/components/footer"
-import ScrollToTopOnNavigate from "@/components/scroll-to-top-on-navigate" // Import the new component
+import ScrollToTopOnNavigate from "@/components/scroll-to-top-on-navigate"
+import WhatsAppChatbot from "@/components/whatsapp-chatbot"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -29,7 +30,8 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
-        <ScrollToTopOnNavigate /> {/* Add the new component here */}
+        <ScrollToTopOnNavigate />
+        <WhatsAppChatbot />
       </body>
     </html>
   )

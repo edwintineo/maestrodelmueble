@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 export default function ContactoPage() {
@@ -20,22 +20,48 @@ export default function ContactoPage() {
     servicio: "",
     mensaje: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica para enviar el formulario
-    toast({
-      title: "Mensaje Enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    })
-    setFormData({
-      nombre: "",
-      email: "",
-      telefono: "",
-      servicio: "",
-      mensaje: "",
-    })
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        toast({
+          title: "¡Mensaje Enviado!",
+          description: "Hemos recibido tu consulta. Te contactaremos pronto.",
+        })
+        setFormData({
+          nombre: "",
+          email: "",
+          telefono: "",
+          servicio: "",
+          mensaje: "",
+        })
+      } else {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Error al enviar el mensaje")
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      toast({
+        title: "Error al enviar",
+        description: "Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctanos directamente.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (field: string, value: string) => {
@@ -49,7 +75,7 @@ export default function ContactoPage() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Teléfono",
-      info: "+56 9 7202 3868",
+      info: "+56 9 22596802",
       description: "Disponible 24/7 para emergencias",
     },
     {
@@ -117,6 +143,7 @@ export default function ContactoPage() {
                         value={formData.nombre}
                         onChange={(e) => handleChange("nombre", e.target.value)}
                         required
+                        disabled={isSubmitting}
                         className="mt-1"
                       />
                     </div>
@@ -128,6 +155,7 @@ export default function ContactoPage() {
                         value={formData.telefono}
                         onChange={(e) => handleChange("telefono", e.target.value)}
                         required
+                        disabled={isSubmitting}
                         className="mt-1"
                       />
                     </div>
@@ -141,13 +169,18 @@ export default function ContactoPage() {
                       value={formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="mt-1"
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="servicio">Servicio de Interés</Label>
-                    <Select value={formData.servicio} onValueChange={(value) => handleChange("servicio", value)}>
+                    <Select
+                      value={formData.servicio}
+                      onValueChange={(value) => handleChange("servicio", value)}
+                      disabled={isSubmitting}
+                    >
                       <SelectTrigger className="mt-1 bg-white">
                         <SelectValue placeholder="Selecciona un servicio" />
                       </SelectTrigger>
@@ -168,15 +201,25 @@ export default function ContactoPage() {
                       value={formData.mensaje}
                       onChange={(e) => handleChange("mensaje", e.target.value)}
                       required
+                      disabled={isSubmitting}
                       rows={5}
                       className="mt-1"
                       placeholder="Cuéntanos sobre tu proyecto, medidas aproximadas, materiales preferidos, presupuesto estimado, etc."
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
-                    <Send className="w-4 h-4 mr-2" />
-                    Enviar Solicitud
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2" />
+                        Enviar Solicitud
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
@@ -216,7 +259,7 @@ export default function ContactoPage() {
                       <p className="text-gray-600 mb-3">Chatea con nosotros directamente</p>
                       <Button
                         className="bg-green-500 hover:bg-green-600"
-                        onClick={() => window.open("https://wa.me/56972023868", "_blank")}
+                        onClick={() => window.open("https://wa.me/56922596802", "_blank")}
                       >
                         Abrir WhatsApp
                       </Button>
@@ -238,7 +281,7 @@ export default function ContactoPage() {
                       <Button
                         variant="outline"
                         className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white bg-transparent"
-                        onClick={() => window.open("tel:+56972023868", "_self")}
+                        onClick={() => window.open("tel:+56922596802", "_self")}
                       >
                         Llamar Ahora
                       </Button>
@@ -337,7 +380,7 @@ export default function ContactoPage() {
             No esperes más. Contáctanos hoy mismo y hagamos realidad el mueble de tus sueños.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" onClick={() => window.open("tel:+56972023868", "_self")}>
+            <Button size="lg" variant="secondary" onClick={() => window.open("tel:+56922596802", "_self")}>
               <Phone className="w-4 h-4 mr-2" />
               Llamar Ahora
             </Button>
@@ -345,7 +388,7 @@ export default function ContactoPage() {
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-orange-500 bg-transparent"
-              onClick={() => window.open("https://wa.me/56972023868", "_blank")}
+              onClick={() => window.open("https://wa.me/56922596802", "_blank")}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               WhatsApp

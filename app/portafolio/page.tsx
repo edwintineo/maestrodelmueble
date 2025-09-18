@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Eye, Calendar, MapPin } from 'lucide-react'
+import { Eye, Calendar, MapPin } from "lucide-react"
 
 export default function PortafolioPage() {
   const [selectedCategory, setSelectedCategory] = useState("todos")
@@ -91,14 +91,14 @@ export default function PortafolioPage() {
       location: "Ñuñoa, Santiago",
       date: "Septiembre 2023",
       description:
-        "Cocina con un toque industrial, combinando muebles bajos en tono verde, encimera de madera y estantes abiertos con soportes metálicos.",
+        "Cocina con un toque industrial, combinando muebles bajos en tono verde, encimera empotrada y estantes abiertos con soportes metálicos.",
       image: "/images/COCINA-VERDE.jpeg",
       gallery: [
         "/images/COCINA-VERDE.jpeg",
         "/placeholder.svg?height=400&width=600",
         "/placeholder.svg?height=400&width=600",
       ],
-      features: ["Estilo industrial", "Encimera de madera", "Estantes abiertos", "Diseño funcional"],
+      features: ["Estilo industrial", "Encimera empotrada", "Estantes abiertos", "Diseño funcional"],
     },
     {
       id: 6,
@@ -318,7 +318,10 @@ export default function PortafolioPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
-              <Card key={project.id} className="overflow-hidden hover:shadow-lg transition-shadow border-2 border-orange-500 hover:border-orange-600">
+              <Card
+                key={project.id}
+                className="overflow-hidden hover:shadow-lg transition-shadow border-2 border-orange-500 hover:border-orange-600"
+              >
                 <div className="relative">
                   <Image
                     src={project.image || "/placeholder.svg"}
