@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { Resend } from "resend"
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,64 +12,40 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Todos los campos obligatorios deben ser completados" }, { status: 400 })
     }
 
-    // Validar que las variables de entorno estén configuradas
-    if (!process.env.ZOHO_EMAIL || !process.env.ZOHO_PASSWORD) {
-      console.error("Variables de entorno no configuradas:", {
-        email: !!process.env.ZOHO_EMAIL,
-        password: !!process.env.ZOHO_PASSWORD,
-      })
+    // Validar que la API key de Resend esté configurada
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY no está configurada")
       return NextResponse.json({ error: "Configuración del servidor incompleta" }, { status: 500 })
     }
 
-    // Configurar el transportador de correo con Zoho Mail
-    const transporter = nodemailer.createTransporter({
-      host: "smtp.zoho.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.ZOHO_EMAIL,
-        pass: process.env.ZOHO_PASSWORD,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    })
+    console.log("Enviando correo con Resend...")
 
-    // Verificar la conexión SMTP
-    try {
-      await transporter.verify()
-      console.log("Conexión SMTP verificada exitosamente")
-    } catch (verifyError) {
-      console.error("Error de verificación SMTP:", verifyError)
-      return NextResponse.json({ error: "Error de configuración de correo" }, { status: 500 })
-    }
-
-    // Configurar el correo para el administrador
-    const adminMailOptions = {
-      from: process.env.ZOHO_EMAIL,
-      to: process.env.ZOHO_EMAIL, // Enviar al mismo correo configurado
+    // Correo para el administrador
+    const adminEmailResult = await resend.emails.send({
+      from: "El Maestro del Mueble <onboarding@resend.dev>", // Dominio verificado de Resend
+      to: ["victor@maestrodelmueble.cl"],
       subject: `Nueva consulta de ${nombre} - El Maestro del Mueble`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #f97316; margin: 0;">El Maestro del Mueble</h1>
-            <p style="color: #666; margin: 5px 0;">Nueva consulta desde el sitio web</p>
+            <h1 style="color: #f97316; margin: 0; font-size: 28px;">El Maestro del Mueble</h1>
+            <p style="color: #666; margin: 5px 0 0 0;">Nueva Consulta Recibida</p>
           </div>
           
-          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+          <div style="background-color: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #f97316;">
             <h2 style="color: #333; margin-top: 0;">Información del Cliente</h2>
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555; width: 30%;">Nombre:</td>
+                <td style="padding: 8px 0; font-weight: bold; color: #555;">Nombre:</td>
                 <td style="padding: 8px 0; color: #333;">${nombre}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #555;">Email:</td>
-                <td style="padding: 8px 0; color: #333;">${email}</td>
+                <td style="padding: 8px 0; color: #333;"><a href="mailto:${email}" style="color: #f97316;">${email}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #555;">Teléfono:</td>
-                <td style="padding: 8px 0; color: #333;">${telefono}</td>
+                <td style="padding: 8px 0; color: #333;"><a href="tel:${telefono}" style="color: #f97316;">${telefono}</a></td>
               </tr>
               ${
                 servicio
@@ -82,100 +60,113 @@ export async function POST(request: NextRequest) {
             </table>
           </div>
           
-          <div style="background-color: #fff; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px;">
-            <h3 style="color: #333; margin-top: 0;">Mensaje:</h3>
-            <p style="color: #555; line-height: 1.6; white-space: pre-wrap;">${mensaje}</p>
+          <div style="background-color: #ffffff; padding: 25px; border: 2px solid #f97316; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: #f97316; margin-top: 0;">Mensaje del Cliente:</h3>
+            <p style="color: #333; line-height: 1.6; white-space: pre-wrap; margin: 0;">${mensaje}</p>
           </div>
           
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center;">
-            <p style="color: #666; font-size: 14px; margin: 0;">
-              Este mensaje fue enviado desde el formulario de contacto de 
-              <strong>El Maestro del Mueble</strong>
+          <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f97316; border-radius: 10px;">
+            <p style="color: white; margin: 0; font-size: 14px;">
+              📅 Recibido el: ${new Date().toLocaleString("es-CL", {
+                timeZone: "America/Santiago",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
             </p>
-            <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">
-              Fecha: ${new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" })}
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <p style="color: #666; font-size: 12px; margin: 0;">
+              Este correo fue enviado automáticamente desde el formulario de contacto de maestrodelmueble.cl
             </p>
           </div>
         </div>
       `,
-    }
+    })
 
-    // Configurar el correo de confirmación para el cliente
-    const clientMailOptions = {
-      from: process.env.ZOHO_EMAIL,
-      to: email,
-      subject: "Confirmación de consulta - El Maestro del Mueble",
+    console.log("Resultado del correo admin:", adminEmailResult)
+
+    // Correo de confirmación para el cliente
+    const clientEmailResult = await resend.emails.send({
+      from: "El Maestro del Mueble <onboarding@resend.dev>",
+      to: [email],
+      subject: "Hemos recibido tu consulta - El Maestro del Mueble",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #f97316; margin: 0;">El Maestro del Mueble</h1>
-            <p style="color: #666; margin: 5px 0;">Gracias por contactarnos</p>
+            <h1 style="color: #f97316; margin: 0; font-size: 28px;">El Maestro del Mueble</h1>
+            <p style="color: #666; margin: 5px 0 0 0;">Confirmación de Consulta</p>
           </div>
           
-          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-            <h2 style="color: #333; margin-top: 0;">¡Hola ${nombre}!</h2>
-            <p style="color: #555; line-height: 1.6;">
-              Hemos recibido tu consulta y nos pondremos en contacto contigo en las próximas 24 horas.
+          <div style="background-color: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0; text-align: center;">
+            <h2 style="color: #333; margin-top: 0;">¡Gracias por contactarnos, ${nombre}!</h2>
+            <p style="color: #666; font-size: 16px; line-height: 1.6;">
+              Hemos recibido tu consulta y nos pondremos en contacto contigo muy pronto para ayudarte con tu proyecto.
             </p>
-            <p style="color: #555; line-height: 1.6;">
-              Mientras tanto, puedes contactarnos directamente:
-            </p>
-            <ul style="color: #555; line-height: 1.6;">
-              <li><strong>Teléfono:</strong> +56 9 22596802</li>
-              <li><strong>WhatsApp:</strong> +56 9 22596802</li>
-              <li><strong>Email:</strong> victor@maestrodelmueble.cl</li>
-            </ul>
           </div>
           
-          <div style="background-color: #fff; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px;">
-            <h3 style="color: #333; margin-top: 0;">Resumen de tu consulta:</h3>
-            <p style="color: #555;"><strong>Servicio de interés:</strong> ${servicio || "No especificado"}</p>
-            <p style="color: #555;"><strong>Mensaje:</strong></p>
-            <p style="color: #555; line-height: 1.6; white-space: pre-wrap; background-color: #f8f9fa; padding: 15px; border-radius: 5px;">${mensaje}</p>
+          <div style="background-color: #ffffff; padding: 25px; border: 2px solid #f97316; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: #f97316; margin-top: 0;">Resumen de tu consulta:</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              ${
+                servicio
+                  ? `
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #555;">Servicio de interés:</td>
+                <td style="padding: 8px 0; color: #333;">${servicio}</td>
+              </tr>
+              `
+                  : ""
+              }
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #555;">Fecha de consulta:</td>
+                <td style="padding: 8px 0; color: #333;">${new Date().toLocaleDateString("es-CL")}</td>
+              </tr>
+            </table>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+              <p style="color: #666; margin: 0; font-style: italic;">"${mensaje.substring(0, 100)}${mensaje.length > 100 ? "..." : ""}"</p>
+            </div>
           </div>
           
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center;">
-            <p style="color: #666; font-size: 14px; margin: 0;">
-              <strong>El Maestro del Mueble</strong> - Creando muebles únicos desde 2008
+          <div style="background-color: #f97316; padding: 25px; border-radius: 10px; margin: 20px 0; text-align: center;">
+            <h3 style="color: white; margin-top: 0;">¿Necesitas contactarnos urgente?</h3>
+            <p style="color: white; margin: 10px 0;">
+              📞 <a href="tel:+56922596802" style="color: white; text-decoration: none;">+56 9 22596802</a><br>
+              📧 <a href="mailto:victor@maestrodelmueble.cl" style="color: white; text-decoration: none;">victor@maestrodelmueble.cl</a><br>
+              💬 <a href="https://wa.me/56922596802" style="color: white; text-decoration: none;">WhatsApp</a>
             </p>
-            <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">
-              Santiago, Región Metropolitana - Chile
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <p style="color: #666; font-size: 12px; margin: 0;">
+              El Maestro del Mueble - Especialistas en mueblería personalizada<br>
+              Santiago, Región Metropolitana
             </p>
           </div>
         </div>
       `,
-    }
+    })
 
-    // Enviar correo al administrador
-    console.log("Enviando correo al administrador...")
-    await transporter.sendMail(adminMailOptions)
-    console.log("Correo al administrador enviado exitosamente")
-
-    // Enviar correo de confirmación al cliente
-    console.log("Enviando correo de confirmación al cliente...")
-    await transporter.sendMail(clientMailOptions)
-    console.log("Correo de confirmación enviado exitosamente")
-
-    return NextResponse.json({ message: "Correos enviados exitosamente" }, { status: 200 })
-  } catch (error) {
-    console.error("Error detallado al enviar correo:", error)
-
-    // Proporcionar más información sobre el error
-    let errorMessage = "Error interno del servidor"
-    if (error instanceof Error) {
-      if (error.message.includes("Invalid login")) {
-        errorMessage = "Error de autenticación con el servidor de correo"
-      } else if (error.message.includes("ECONNREFUSED")) {
-        errorMessage = "No se pudo conectar al servidor de correo"
-      } else if (error.message.includes("timeout")) {
-        errorMessage = "Tiempo de espera agotado al conectar con el servidor de correo"
-      }
-    }
+    console.log("Resultado del correo cliente:", clientEmailResult)
 
     return NextResponse.json(
       {
-        error: errorMessage,
-        details: process.env.NODE_ENV === "development" ? error.message : undefined,
+        message: "Mensajes enviados exitosamente",
+        adminEmailId: adminEmailResult.data?.id,
+        clientEmailId: clientEmailResult.data?.id,
+      },
+      { status: 200 },
+    )
+  } catch (error) {
+    console.error("Error completo al enviar correos:", error)
+
+    return NextResponse.json(
+      {
+        error: "Error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente por WhatsApp.",
+        details: error instanceof Error ? error.message : "Error desconocido",
       },
       { status: 500 },
     )
