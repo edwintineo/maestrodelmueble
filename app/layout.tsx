@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import Footer from "@/components/footer"
 import ScrollToTopOnNavigate from "@/components/scroll-to-top-on-navigate"
 import WhatsAppChatbot from "@/components/whatsapp-chatbot"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,6 +25,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18191810958"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-18191810958');
+          `}
+        </Script>
+      </head>
       <body className={inter.className}>
         <Header />
         <Navigation />
