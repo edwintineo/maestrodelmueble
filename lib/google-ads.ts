@@ -11,13 +11,8 @@ declare global {
  * Consume de forma segura las variables de entorno de producción de Next.js.
  */
 export function trackWhatsAppConversion(): void {
-  const awId = process.env.NEXT_PUBLIC_GOOGLE_ADS_AW_ID || "18191810958";
-  const label = process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_LABEL || "lixiCM3t-bYcEl6DxOJD";
-
-  if (!awId || !label) {
-    console.warn("⚠️ Advertencia: Google Ads AW_ID o WHATSAPP_LABEL no están configurados.");
-    return;
-  }
+  const awId = "18191810958";
+  const label = "lixiCM3t-bYcEl6DxOJD";
 
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("event", "conversion", {
