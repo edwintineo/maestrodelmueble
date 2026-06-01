@@ -39,6 +39,21 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'AW-18191810958');
+
+            window.gtag_report_conversion = function(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-18191810958/lixiCM3t-bYcEI6DxOJD',
+                  'value': 1.0,
+                  'currency': 'CLP',
+                  'event_callback': callback
+              });
+              return false;
+            };
           `}
         </Script>
       </head>

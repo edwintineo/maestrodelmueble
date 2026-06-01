@@ -37,6 +37,11 @@ export default function ContactoPage() {
       })
 
       if (response.ok) {
+        // Disparar evento de conversión de Google Ads
+        if (typeof window !== "undefined" && typeof (window as any).gtag_report_conversion === "function") {
+          (window as any).gtag_report_conversion();
+        }
+
         toast({
           title: "¡Mensaje Enviado!",
           description: "Hemos recibido tu consulta. Te contactaremos pronto.",
