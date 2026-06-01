@@ -23,7 +23,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_AW_ID
+  const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_AW_ID || "18191810958"
 
   return (
     <html lang="es">
