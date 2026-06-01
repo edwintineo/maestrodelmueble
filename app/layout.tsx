@@ -23,39 +23,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_AW_ID
+
   return (
     <html lang="es">
       <head>
         {/* Google tag (gtag.js) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18191810958"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-18191810958');
-
-            window.gtag_report_conversion = function(url) {
-              var callback = function () {
-                if (typeof(url) != 'undefined') {
-                  window.location = url;
-                }
-              };
-              gtag('event', 'conversion', {
-                  'send_to': 'AW-18191810958/lixiCM3t-bYcEI6DxOJD',
-                  'value': 1.0,
-                  'currency': 'CLP',
-                  'event_callback': callback
-              });
-              return false;
-            };
-          `}
-        </Script>
+        {googleAdsId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=AW-${googleAdsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-${googleAdsId}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body className={inter.className}>
         <Header />

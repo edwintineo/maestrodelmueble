@@ -1,12 +1,14 @@
 "use client"
 
 import { MessageCircle } from "lucide-react"
+import { trackWhatsAppConversion } from "@/lib/google-ads"
 
 export default function WhatsAppFloat() {
   const handleWhatsAppClick = () => {
     const phoneNumber = "56912345678" // Reemplazar con el número real
     const message = "Hola, me interesa conocer más sobre sus servicios de mueblería."
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    trackWhatsAppConversion()
     window.open(url, "_blank")
   }
 

@@ -3,6 +3,7 @@
 import { MessageCircle, X } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { trackWhatsAppConversion } from "@/lib/google-ads"
 
 export default function WhatsAppChatbot() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,6 +12,7 @@ export default function WhatsAppChatbot() {
   const handleWhatsAppClick = () => {
     const message = "¡Hola! Me interesa conocer más sobre sus servicios de mueblería. ¿Podrían ayudarme?"
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    trackWhatsAppConversion()
     window.open(url, "_blank")
   }
 

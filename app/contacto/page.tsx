@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { trackWhatsAppConversion } from "@/lib/google-ads"
 
 export default function ContactoPage() {
   const [formData, setFormData] = useState({
@@ -264,7 +265,10 @@ export default function ContactoPage() {
                       <p className="text-gray-600 mb-3">Chatea con nosotros directamente</p>
                       <Button
                         className="bg-green-500 hover:bg-green-600"
-                        onClick={() => window.open("https://wa.me/56922596802", "_blank")}
+                        onClick={() => {
+                          trackWhatsAppConversion()
+                          window.open("https://wa.me/56922596802", "_blank")
+                        }}
                       >
                         Abrir WhatsApp
                       </Button>
@@ -393,7 +397,10 @@ export default function ContactoPage() {
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-orange-500 bg-transparent"
-              onClick={() => window.open("https://wa.me/56922596802", "_blank")}
+              onClick={() => {
+                trackWhatsAppConversion()
+                window.open("https://wa.me/56922596802", "_blank")
+              }}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               WhatsApp
