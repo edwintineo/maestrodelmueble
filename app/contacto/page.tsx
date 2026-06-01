@@ -38,9 +38,14 @@ export default function ContactoPage() {
       })
 
       if (response.ok) {
-        // Disparar evento de conversión de Google Ads
-        if (typeof window !== "undefined" && typeof (window as any).gtag_report_conversion === "function") {
-          (window as any).gtag_report_conversion();
+        // Disparar evento de conversión de Google Ads de forma directa y segura con payload estricto
+        if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+          (window as any).gtag("event", "conversion", {
+            send_to: "AW-18191810958/lixiCM3t-bYcEl6DxOJD",
+            value: 1.0,
+            currency: "CLP",
+          });
+          console.log("📈 Hit de conversión enviado con éxito a Google Ads (Formulario de Contacto).");
         }
 
         toast({

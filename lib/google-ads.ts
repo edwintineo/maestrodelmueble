@@ -11,7 +11,7 @@ declare global {
  * Consume de forma segura las variables de entorno de producción de Next.js.
  */
 export function trackWhatsAppConversion(): void {
-  const awId = "18191810958";
+  const awId = "AW-18191810958";
   const label = "lixiCM3t-bYcEl6DxOJD";
 
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -20,7 +20,7 @@ export function trackWhatsAppConversion(): void {
       value: 1.0,
       currency: "CLP",
     });
-    console.log("📈 Google Ads: Conversión de WhatsApp registrada exitosamente.");
+    console.log("📈 Google Ads: Conversión de WhatsApp registrada exitosamente con prefijo AW-.");
   } else {
     console.warn("⚠️ Advertencia: window.gtag no está disponible o no se ha inicializado.");
   }
