@@ -36,9 +36,9 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-${googleAdsId}');
+            window.gtag = function(){dataLayer.push(arguments);}
+            window.gtag('js', new Date());
+            window.gtag('config', 'AW-${googleAdsId}');
 
             window.gtag_report_conversion = function(url) {
               var callback = function () {
@@ -46,12 +46,14 @@ export default function RootLayout({
                   window.location = url;
                 }
               };
-              gtag('event', 'conversion', {
-                  'send_to': 'AW-18191810958/lixiCM3t-bYcEl6DxOJD',
-                  'value': 1.0,
-                  'currency': 'CLP',
-                  'event_callback': callback
-              });
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', {
+                    'send_to': 'AW-18191810958/lixiCM3t-bYcEl6DxOJD',
+                    'value': 1.0,
+                    'currency': 'CLP',
+                    'event_callback': callback
+                });
+              }
               return false;
             };
           `}

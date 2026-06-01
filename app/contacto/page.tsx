@@ -38,14 +38,17 @@ export default function ContactoPage() {
       })
 
       if (response.ok) {
-        // Disparar evento de conversión de Google Ads de forma directa y segura con payload estricto
-        if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        // Disparar evento de conversión de Google Ads utilizando la función global auditada por Google, con fallback directo
+        if (typeof window !== "undefined" && typeof (window as any).gtag_report_conversion === "function") {
+          (window as any).gtag_report_conversion();
+          console.log("📈 Conversión certificada de Google Ads gatillada con éxito (Formulario de Contacto).");
+        } else if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
           (window as any).gtag("event", "conversion", {
             send_to: "AW-18191810958/lixiCM3t-bYcEl6DxOJD",
             value: 1.0,
             currency: "CLP",
           });
-          console.log("📈 Hit de conversión enviado con éxito a Google Ads (Formulario de Contacto).");
+          console.log("📈 Hit de conversión enviado como fallback directo a Google Ads.");
         }
 
         toast({
