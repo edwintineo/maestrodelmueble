@@ -30,7 +30,7 @@ export default function PortafolioPage() {
   ]
 
 
-  const projects = [
+    const projects = [
     {
       id: 1,
       title: "Cocina Moderna Minimalista",
@@ -42,8 +42,8 @@ export default function PortafolioPage() {
       image: "/images/COCINA-MODERNA-GRIS.jpeg",
       gallery: [
         "/images/COCINA-MODERNA-GRIS.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-bisagra-cierre-suave.jpeg",
+        "/images/detalle-griferia-cocina.jpeg",
       ],
       features: ["Diseño minimalista", "Electrodomésticos integrados", "Estantes abiertos", "Acabados de alta calidad"],
     },
@@ -58,8 +58,8 @@ export default function PortafolioPage() {
       image: "/images/CLOSET-OSCURO.jpeg",
       gallery: [
         "/images/CLOSET-OSCURO.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-tirador-mueble.jpeg",
+        "/images/detalle-cajonera-rieles-1.jpeg",
       ],
       features: ["Puertas batientes", "Amplio espacio de almacenamiento", "Diseño a medida", "Materiales resistentes"],
     },
@@ -74,8 +74,8 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-TV-SALON.jpeg",
       gallery: [
         "/images/MUEBLE-TV-SALON.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-cocina-led-2.jpeg",
+        "/images/detalle-cajonera-rieles-2.jpeg",
       ],
       features: ["Iluminación LED", "Almacenamiento oculto", "Diseño moderno", "Integración de TV"],
     },
@@ -90,8 +90,8 @@ export default function PortafolioPage() {
       image: "/images/CAMA-NIDO-CASITA.jpeg",
       gallery: [
         "/images/CAMA-NIDO-CASITA.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-tirador-mueble.jpeg",
+        "/images/detalle-cajonera-rieles-1.jpeg",
       ],
       features: ["Diseño temático", "Cama extraíble", "Seguridad infantil", "Madera resistente"],
     },
@@ -106,8 +106,8 @@ export default function PortafolioPage() {
       image: "/images/COCINA-VERDE.jpeg",
       gallery: [
         "/images/COCINA-VERDE.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-despensa-extraible-1.jpeg",
+        "/images/detalle-despensa-extraible-2.jpeg",
       ],
       features: ["Estilo industrial", "Encimera empotrada", "Estantes abiertos", "Diseño funcional"],
     },
@@ -122,8 +122,8 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-MODULAR.jpeg",
       gallery: [
         "/images/MUEBLE-MODULAR.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-tirador-mueble.jpeg",
+        "/images/detalle-cajonera-rieles-2.jpeg",
       ],
       features: ["Diseño modular", "Almacenamiento versátil", "Madera y melamina", "Fácil adaptación"],
     },
@@ -138,8 +138,7 @@ export default function PortafolioPage() {
       image: "/images/MESA-REUNION-OFICINA.jpeg",
       gallery: [
         "/images/MESA-REUNION-OFICINA.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-tirador-mueble.jpeg",
       ],
       features: ["Gran capacidad", "Acabados premium", "Diseño robusto", "Ideal para corporativos"],
     },
@@ -154,8 +153,6 @@ export default function PortafolioPage() {
       image: "/images/CAMA-CARS.jpeg",
       gallery: [
         "/images/CAMA-CARS.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Diseño temático", "Seguridad infantil", "Colores vibrantes", "Fácil montaje"],
     },
@@ -170,8 +167,7 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-RECEPCION.jpeg",
       gallery: [
         "/images/MUEBLE-RECEPCION.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-tirador-mueble.jpeg",
       ],
       features: ["Diseño curvo", "Cajonera integrada", "Acabado profesional", "Espacio optimizado"],
     },
@@ -186,12 +182,9 @@ export default function PortafolioPage() {
       image: "/images/MESA-REDONDA-MADERA.jpeg",
       gallery: [
         "/images/MESA-REDONDA-MADERA.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Diseño exclusivo", "Madera maciza", "Base geométrica", "Acabado pulido"],
     },
-    // New projects from the second batch of images
     {
       id: 11,
       title: "Cocina Moderna con Detalles Negros",
@@ -203,8 +196,7 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-COCINA-4.jpeg",
       gallery: [
         "/images/MUEBLE-COCINA-4.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
+        "/images/detalle-cocina-led-1.jpeg",
       ],
       features: ["Gabinetes negros", "Encimera de madera", "Diseño moderno", "Electrodomésticos integrados"],
     },
@@ -219,8 +211,6 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-COCINA-5.jpeg",
       gallery: [
         "/images/MUEBLE-COCINA-5.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Optimización de espacio", "Lavadora integrada", "Diseño luminoso", "Encimera de madera"],
     },
@@ -235,8 +225,6 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-TV-2.jpeg",
       gallery: [
         "/images/MUEBLE-TV-2.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Diseño flotante", "Almacenamiento con ruedas", "Estilo minimalista", "Marco para TV"],
     },
@@ -251,8 +239,6 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-CAJA-RECEPCION.jpeg",
       gallery: [
         "/images/MUEBLE-CAJA-RECEPCION.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Iluminación LED", "Diseño moderno", "Acabados de madera", "Ideal para recepciones"],
     },
@@ -267,8 +253,6 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-TV-PARED.jpeg",
       gallery: [
         "/images/MUEBLE-TV-PARED.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Gran capacidad de almacenamiento", "Diseño integrado", "Acabados en madera", "Espacio para TV"],
     },
@@ -283,8 +267,6 @@ export default function PortafolioPage() {
       image: "/images/MUEBLE-BARRA-CAFE.jpeg",
       gallery: [
         "/images/MUEBLE-BARRA-CAFE.jpeg",
-        "/placeholder.svg?height=400&width=600",
-        "/placeholder.svg?height=400&width=600",
       ],
       features: ["Diseño comercial", "Madera natural", "Funcionalidad", "Estilo moderno"],
     },
@@ -453,6 +435,415 @@ export default function PortafolioPage() {
         "/images/escritorio-home-office-2.jpeg"
       ],
       features: ["Cubierta resistente", "Cajoneras organizadoras", "Diseño ergonómico", "Estructura reforzada"],
+    },
+    {
+      id: 31,
+      title: "Cocina Moderna Gris con Luz LED",
+      category: "cocinas",
+      location: "Las Condes, Santiago",
+      date: "Enero 2024",
+      description:
+        "Cocina moderna con un elegante acabado en gris oscuro, cubierta blanca y luces LED empotradas bajo los muebles aéreos para una iluminación perfecta.",
+      image: "/images/cocina-moderna-gris-luz-led.jpeg",
+      gallery: [
+        "/images/cocina-moderna-gris-luz-led.jpeg",
+        "/images/detalle-cocina-led-1.jpeg"
+      ],
+      features: ["Luz LED bajo aéreos", "Encimera a gas", "Cubierta blanca", "Tonos grises mate"],
+    },
+    {
+      id: 32,
+      title: "Mueble Bar Moderno con Listones",
+      category: "muebles",
+      location: "Providencia, Santiago",
+      date: "Febrero 2024",
+      description:
+        "Mueble bar comercial o residencial con frente de listones de madera clara y retroiluminación en la estantería, ideal para exhibición de copas.",
+      image: "/images/mueble-bar-listones-madera-clara.jpeg",
+      gallery: [
+        "/images/mueble-bar-listones-madera-clara.jpeg",
+        "/images/mueble-bar-taller-rustico.jpeg"
+      ],
+      features: ["Listones verticales", "Iluminación cálida", "Revestimiento de madera", "Diseño de bar"],
+    },
+    {
+      id: 33,
+      title: "Cocina Base Negra y Aéreos Nogal",
+      category: "cocinas",
+      location: "Vitacura, Santiago",
+      date: "Marzo 2024",
+      description:
+        "Moderna cocina bicolor que combina gabinetes inferiores en negro brillante con muebles aéreos en tono nogal e iluminación LED integrada.",
+      image: "/images/cocina-base-negra-aereos-nogal.jpeg",
+      gallery: [
+        "/images/cocina-base-negra-aereos-nogal.jpeg",
+      ],
+      features: ["Aéreos nogal", "Base negra brillante", "Lavaplatos empotrado", "Iluminación integrada"],
+    },
+    {
+      id: 34,
+      title: "Mostrador Comercial Tienda Vans",
+      category: "muebles",
+      location: "Mall Santiago, Santiago",
+      date: "Abril 2024",
+      description:
+        "Gran mostrador comercial en forma de U fabricado para una tienda de zapatillas, combinando madera clara y paneles grises con estanterías internas.",
+      image: "/images/mostrador-comercial-tienda-vans.jpeg",
+      gallery: [
+        "/images/mostrador-comercial-tienda-vans.jpeg",
+      ],
+      features: ["Diseño en U", "Madera y gris", "Mobiliario comercial", "Estanterías internas"],
+    },
+    {
+      id: 35,
+      title: "Walk-In Closet Iluminación Roble",
+      category: "closets",
+      location: "Lo Barnechea, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Walk-in closet o vestidor diseñado a medida en melamina roble texturizada, con cajoneras suspendidas, zapateros e iluminación LED cálida.",
+      image: "/images/walkin-closet-iluminacion-led-roble.jpeg",
+      gallery: [
+        "/images/walkin-closet-iluminacion-led-roble.jpeg",
+      ],
+      features: ["Melamina roble", "Cajoneras suspendidas", "Iluminación LED", "Estructura abierta"],
+    },
+    {
+      id: 36,
+      title: "Cocina Lineal Gris Claro y Madera",
+      category: "cocinas",
+      location: "Santiago Centro",
+      date: "Marzo 2024",
+      description:
+        "Diseño de cocina lineal para departamento, maximizando el espacio con gabinetes gris claro, encimeras de madera y baldosa hidráulica decorativa.",
+      image: "/images/cocina-lineal-gris-claro-madera.jpeg",
+      gallery: [
+        "/images/cocina-lineal-gris-claro-madera.jpeg",
+      ],
+      features: ["Diseño lineal", "Muebles gris claro", "Encimera de madera", "Piso decorativo"],
+    },
+    {
+      id: 37,
+      title: "Mueble Bajo de Cocina en Esquina",
+      category: "cocinas",
+      location: "Ñuñoa, Santiago",
+      date: "Abril 2024",
+      description:
+        "Mueble bajo de cocina en esquina con perfilería negra y cajones de gran profundidad, optimizando los ángulos difíciles del espacio.",
+      image: "/images/mueble-bajo-cocina-esquina.jpeg",
+      gallery: [
+        "/images/mueble-bajo-cocina-esquina.jpeg",
+      ],
+      features: ["Esquinero funcional", "Perfilería negra", "Cajones profundos", "Cubierta blanca"],
+    },
+    {
+      id: 38,
+      title: "Cocina Moderna Isla Curva",
+      category: "cocinas",
+      location: "Las Condes, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Cocina contemporánea de concepto abierto, destacando una gran isla central curva con cubierta de mármol y elegantes muebles verdes superiores.",
+      image: "/images/cocina-moderna-isla-curva-verde.jpeg",
+      gallery: [
+        "/images/cocina-moderna-isla-curva-verde.jpeg",
+      ],
+      features: ["Isla curva", "Cubierta mármol", "Muebles verdes", "Concepto abierto"],
+    },
+    {
+      id: 39,
+      title: "Mueble Bar y Cava Buffet",
+      category: "muebles",
+      location: "Colina, Santiago",
+      date: "Junio 2024",
+      description:
+        "Mueble bar y cava de vinos tipo buffet fabricado en madera nativa robusta con compartimentos internos oscuros para botellas y cajoneras.",
+      image: "/images/mueble-bar-cava-buffet-rustico.jpeg",
+      gallery: [
+        "/images/mueble-bar-cava-buffet-rustico.jpeg",
+      ],
+      features: ["Madera nativa", "Compartimento botellas", "Estilo buffet", "Cajoneras internas"],
+    },
+    {
+      id: 40,
+      title: "Closet Alto Puertas de Listones",
+      category: "closets",
+      location: "La Reina, Santiago",
+      date: "Marzo 2024",
+      description:
+        "Closet empotrado de gran altura con puertas correderas de listones de madera, aportando una textura natural única al dormitorio.",
+      image: "/images/closet-alto-puertas-listones-madera.jpeg",
+      gallery: [
+        "/images/closet-alto-puertas-listones-madera.jpeg",
+      ],
+      features: ["Puertas de listones", "Gran altura", "Repisas internas", "Diseño empotrado"],
+    },
+    {
+      id: 41,
+      title: "Cocina Isla Cubierta Madera Nativa",
+      category: "cocinas",
+      location: "Peñalolén, Santiago",
+      date: "Junio 2024",
+      description:
+        "Cocina en L con isla central, equipada con cubiertas de madera nativa rojiza vitrificada y muebles inferiores en blanco brillante.",
+      image: "/images/cocina-isla-cubierta-madera-nativa.jpeg",
+      gallery: [
+        "/images/cocina-isla-cubierta-madera-nativa.jpeg",
+      ],
+      features: ["Isla central", "Cubierta madera nativa", "Base blanca", "Horno empotrado"],
+    },
+    {
+      id: 42,
+      title: "Cocina Pequeña Blanca Lineal",
+      category: "cocinas",
+      location: "Estación Central, Santiago",
+      date: "Julio 2024",
+      description:
+        "Cocina lineal de tamaño compacto ideal para departamentos, diseñada en color blanco con cubiertas de madera clara para mayor luminosidad.",
+      image: "/images/cocina-pequena-blanca-lineal.jpeg",
+      gallery: [
+        "/images/cocina-pequena-blanca-lineal.jpeg",
+      ],
+      features: ["Tamaño compacto", "Muebles blancos", "Encimera integrada", "Optimización"],
+    },
+    {
+      id: 43,
+      title: "Rack TV Madera y Negro",
+      category: "muebles",
+      location: "La Florida, Santiago",
+      date: "Abril 2024",
+      description:
+        "Rack de TV de diseño flotante o bajo, combinando estructura robusta de madera nativa con gabinetes y frentes en negro mate.",
+      image: "/images/rack-tv-taller-madera-negro.jpeg",
+      gallery: [
+        "/images/rack-tv-taller-madera-negro.jpeg",
+      ],
+      features: ["Madera y negro", "Diseño flotante", "Espacio multimedia", "Tiradores ocultos"],
+    },
+    {
+      id: 44,
+      title: "Closet Vestidor Abierto Industrial",
+      category: "closets",
+      location: "Santiago Centro",
+      date: "Mayo 2024",
+      description:
+        "Vestidor abierto sin puertas con estructura de melamina gris acero y barras de metal cromado, ideal para un estilo industrial moderno.",
+      image: "/images/closet-vestidor-abierto-industrial.jpeg",
+      gallery: [
+        "/images/closet-vestidor-abierto-industrial.jpeg",
+      ],
+      features: ["Estilo industrial", "Sin puertas", "Melamina gris acero", "Barras reforzadas"],
+    },
+    {
+      id: 45,
+      title: "Cocina L Verde Salvia y Beige",
+      category: "cocinas",
+      location: "Vitacura, Santiago",
+      date: "Junio 2024",
+      description:
+        "Preciosa cocina en L combinando gabinetes verde salvia y beige, repisas de madera iluminadas y piso de baldosas decorativas.",
+      image: "/images/cocina-l-verde-salvia-beige.jpeg",
+      gallery: [
+        "/images/cocina-l-verde-salvia-beige.jpeg",
+      ],
+      features: ["Verde salvia", "Repisas iluminadas", "Cubierta de madera", "Piso hidráulico"],
+    },
+    {
+      id: 46,
+      title: "Vestidor Blanco de Esquina",
+      category: "closets",
+      location: "Las Condes, Santiago",
+      date: "Julio 2024",
+      description:
+        "Walk-in closet blanco en forma de L diseñado para esquinas complicadas, incorporando cajoneras con tiradores dorados elegantes.",
+      image: "/images/vestidor-walkin-closet-blanco-esquina.jpeg",
+      gallery: [
+        "/images/vestidor-walkin-closet-blanco-esquina.jpeg",
+      ],
+      features: ["Diseño en esquina", "Melamina blanca", "Tiradores dorados", "Cajoneras amplias"],
+    },
+    {
+      id: 47,
+      title: "Mostrador Comercial en U",
+      category: "muebles",
+      location: "Centro Comercial, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Mostrador curvo o en forma de U de gran tamaño para tienda de retail, combinando madera noble con zócalos grises de alto tráfico.",
+      image: "/images/mostrador-comercial-forma-u.jpeg",
+      gallery: [
+        "/images/mostrador-comercial-forma-u.jpeg",
+      ],
+      features: ["Forma de U", "Uso comercial", "Alto tráfico", "Repisas traseras"],
+    },
+    {
+      id: 48,
+      title: "Estantería Exhibidora Showroom",
+      category: "muebles",
+      location: "Local Comercial, Providencia",
+      date: "Junio 2024",
+      description:
+        "Gran estantería o mueble exhibidor que cubre una pared completa, diseñada en madera clara con múltiples nichos de exhibición.",
+      image: "/images/estanteria-exhibidor-pared-showroom.jpeg",
+      gallery: [
+        "/images/estanteria-exhibidor-pared-showroom.jpeg",
+      ],
+      features: ["Pared completa", "Exhibidor de nichos", "Madera clara", "Fácil montaje"],
+    },
+    {
+      id: 49,
+      title: "Closet Abierto Blanco Dormitorio",
+      category: "closets",
+      location: "San Miguel, Santiago",
+      date: "Abril 2024",
+      description:
+        "Closet abierto empotrado en color blanco con marco gris oscuro, barras y cajones telescópicos para optimizar el espacio del dormitorio.",
+      image: "/images/closet-abierto-blanco-dormitorio.jpeg",
+      gallery: [
+        "/images/closet-abierto-blanco-dormitorio.jpeg",
+      ],
+      features: ["Estructura blanca", "Marco gris oscuro", "Cajones telescópicos", "Optimizado"],
+    },
+    {
+      id: 50,
+      title: "Cocina Isla Oscura y Vitrina",
+      category: "cocinas",
+      location: "Lo Barnechea, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Espectacular cocina con isla central en negro mate, vitrina de copas iluminada con luz cálida y aéreos en roble natural.",
+      image: "/images/cocina-moderna-isla-oscura-vitrina.jpeg",
+      gallery: [
+        "/images/cocina-moderna-isla-oscura-vitrina.jpeg",
+      ],
+      features: ["Isla negra mate", "Vitrina iluminada", "Aéreos roble", "Estilo moderno"],
+    },
+    {
+      id: 51,
+      title: "Mostrador Comercial Tienda Ropa",
+      category: "muebles",
+      location: "Providencia, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Mostrador largo para caja y atención al cliente en tienda de ropa, combinando melamina gris y cubiertas de madera nativa.",
+      image: "/images/mostrador-comercial-tienda-ropa.jpeg",
+      gallery: [
+        "/images/mostrador-comercial-tienda-ropa.jpeg",
+      ],
+      features: ["Mostrador largo", "Uso comercial", "Cubierta madera", "Cajoneras traseras"],
+    },
+    {
+      id: 52,
+      title: "Mueble Recepción Listones Blancos",
+      category: "muebles",
+      location: "Oficina Corporativa, Ñuñoa",
+      date: "Junio 2024",
+      description:
+        "Mostrador de recepción para oficina con panel frontal de listones verticales blancos y cubierta lateral gris para atención.",
+      image: "/images/mueble-recepcion-listones-blancos.jpeg",
+      gallery: [
+        "/images/mueble-recepcion-listones-blancos.jpeg",
+      ],
+      features: ["Listones blancos", "Recepción moderna", "Cubierta gris", "Taller a medida"],
+    },
+    {
+      id: 53,
+      title: "Cocina Torre Despensa Blanca",
+      category: "cocinas",
+      location: "San Joaquín, Santiago",
+      date: "Julio 2024",
+      description:
+        "Cocina moderna con una gran torre de despensa blanca que integra microondas y horno, y muebles bajos en tono madera natural.",
+      image: "/images/cocina-torre-despensa-blanca.jpeg",
+      gallery: [
+        "/images/cocina-torre-despensa-blanca.jpeg",
+      ],
+      features: ["Torre de despensa", "Electrodomésticos empotrados", "Base madera", "Despensa blanca"],
+    },
+    {
+      id: 54,
+      title: "Cocina Bicolor Blanco y Azul",
+      category: "cocinas",
+      location: "La Reina, Santiago",
+      date: "Julio 2024",
+      description:
+        "Llamativa cocina bicolor con muebles aéreos blancos para mayor amplitud y muebles base en color azul petróleo con encimera integrada.",
+      image: "/images/cocina-bicolor-blanco-azul.jpeg",
+      gallery: [
+        "/images/cocina-bicolor-blanco-azul.jpeg",
+      ],
+      features: ["Bicolor", "Azul petróleo", "Aéreos blancos", "Diseño contemporáneo"],
+    },
+    {
+      id: 55,
+      title: "Escritorio Rack Living Paneles LED",
+      category: "muebles",
+      location: "Las Condes, Santiago",
+      date: "Abril 2024",
+      description:
+        "Mueble de escritorio multifuncional integrado al rack de TV del living, con paneles de madera clara retroiluminados con tiras LED.",
+      image: "/images/escritorio-rack-living-paneles-led.jpeg",
+      gallery: [
+        "/images/escritorio-rack-living-paneles-led.jpeg",
+      ],
+      features: ["Escritorio integrado", "Paneles retroiluminados", "Luces LED", "Gabinetes flotantes"],
+    },
+    {
+      id: 56,
+      title: "Closet Grande Puertas Correderas",
+      category: "closets",
+      location: "Vitacura, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Closet de pared a pared de gran tamaño con puertas correderas de madera clara, optimizando el espacio del dormitorio principal.",
+      image: "/images/closet-grande-puertas-correderas.jpeg",
+      gallery: [
+        "/images/closet-grande-puertas-correderas.jpeg",
+      ],
+      features: ["Puertas correderas", "Gran tamaño", "Madera clara", "Almacenamiento masivo"],
+    },
+    {
+      id: 57,
+      title: "Escritorio Estudio Gris Oscuro",
+      category: "muebles",
+      location: "Las Condes, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Mueble de escritorio flotante para estudio o teletrabajo, fabricado con melamina gris oscuro e iluminación LED indirecta.",
+      image: "/images/escritorio-estudio-gris-oscuro-led.jpeg",
+      gallery: [
+        "/images/escritorio-estudio-gris-oscuro-led.jpeg",
+      ],
+      features: ["Escritorio flotante", "Melamina gris oscuro", "Iluminación LED", "Diseño estudio"],
+    },
+    {
+      id: 58,
+      title: "Mesa Arrimo Hall Entrada",
+      category: "muebles",
+      location: "Peñalolén, Santiago",
+      date: "Enero 2024",
+      description:
+        "Elegante mesa de arrimo o consola diseñada para el hall de entrada, fabricada a medida en madera sólida con acabados finos.",
+      image: "/images/mesa-arrimo-hall-entrada.jpeg",
+      gallery: [
+        "/images/mesa-arrimo-hall-entrada.jpeg",
+      ],
+      features: ["Consola arrimo", "Hall de entrada", "Madera sólida", "Acabados finos"],
+    },
+    {
+      id: 59,
+      title: "Mesa de Centro Living",
+      category: "muebles",
+      location: "Vitacura, Santiago",
+      date: "Enero 2024",
+      description:
+        "Mesa de centro para living con cubierta de madera rústica y diseño minimalista, ideal para el centro de la sala de estar.",
+      image: "/images/mesa-centro-living-1.jpeg",
+      gallery: [
+        "/images/mesa-centro-living-1.jpeg",
+        "/images/mesa-centro-living-2.jpeg",
+      ],
+      features: ["Mesa de centro", "Madera rústica", "Diseño minimalista", "Living moderno"],
     },
   ]
 
