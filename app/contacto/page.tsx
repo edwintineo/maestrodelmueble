@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -12,8 +11,56 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { trackWhatsAppConversion } from "@/lib/google-ads"
+import JsonLd from "@/app/schema"
 
 export default function ContactoPage() {
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contacto - El Maestro del Mueble",
+    "description": "Solicita tu cotización de muebles a medida sin costo en Santiago. Contáctanos por WhatsApp, teléfono o nuestro formulario.",
+    "url": "https://www.maestrodelmueble.cl/contacto"
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tiempo toma un proyecto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los tiempos varían según la complejidad. Una cocina integral puede tomar 2-4 semanas, mientras que muebles más simples 1-2 semanas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Ofrecen garantía?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, todos nuestros trabajos incluyen 2 años de garantía en estructura y 1 año en herrajes y accesorios."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen visitas a domicilio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Por supuesto. Realizamos visitas técnicas gratuitas para tomar medidas y evaluar el proyecto en tu hogar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué formas de pago aceptan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aceptamos efectivo, transferencias bancarias, tarjetas de crédito y ofrecemos planes de financiamiento."
+        }
+      }
+    ]
+  }
+
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -123,10 +170,12 @@ export default function ContactoPage() {
 
   return (
     <main>
+      <JsonLd data={contactSchema} />
+      <JsonLd data={faqSchema} />
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contáctanos</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contacto y Cotización Gratis</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Estamos aquí para ayudarte a hacer realidad tu proyecto. Contáctanos y recibe una cotización personalizada
             sin compromiso.

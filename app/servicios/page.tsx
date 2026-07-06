@@ -1,14 +1,68 @@
-"use client" // This component needs to be a Client Component to use framer-motion and useInView
+"use client"
 
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Check, Clock, Shield, Users } from 'lucide-react'
 import Link from "next/link"
-import { motion } from "framer-motion" // Import motion
-import { useInView } from "react-intersection-observer" // Import useInView
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
+import JsonLd from "@/app/schema"
 
 export default function ServiciosPage() {
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Servicios de Mueblería a Medida en Santiago",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Cocinas Integrales",
+          "description": "Diseño y fabricación de cocinas modernas, funcionales y adaptadas a tu espacio y necesidades."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Closets y Vestidores",
+          "description": "Soluciones de almacenamiento inteligentes que maximizan el espacio y organizan tu ropa de manera eficiente."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "Muebles a Medida",
+          "description": "Creación de muebles únicos diseñados específicamente para tu hogar y estilo de vida."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Reparación y Restauración",
+          "description": "Devolvemos la vida a tus muebles antiguos con técnicas artesanales y acabados de alta calidad."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Service",
+          "name": "Instalación y Montaje",
+          "description": "Servicio profesional de armado e instalación de todo tipo de muebles para asegurar un ajuste perfecto."
+        }
+      }
+    ]
+  }
+
   const services = [
     {
       title: "Cocinas Integrales",
@@ -127,6 +181,7 @@ export default function ServiciosPage() {
 
   return (
     <main>
+      <JsonLd data={servicesSchema} />
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
@@ -136,7 +191,7 @@ export default function ServiciosPage() {
         className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16"
       >
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nuestros Servicios</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Servicios de Mueblería a Medida en Santiago</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Ofrecemos soluciones completas en mueblería con la más alta calidad, diseños personalizados y servicio
             profesional garantizado.
@@ -168,9 +223,10 @@ export default function ServiciosPage() {
                     <div className={`relative ${index % 2 === 1 ? "md:order-2" : ""}`}>
                       <Image
                         src={service.image || "/placeholder.svg"}
-                        alt={service.title}
+                        alt={`Servicio de ${service.title} - El Maestro del Mueble`}
                         width={400}
                         height={300}
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="w-full h-64 md:h-full object-cover"
                       />
                     </div>

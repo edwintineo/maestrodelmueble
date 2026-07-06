@@ -164,8 +164,9 @@ export default function HomePage() {
         {/* Background Image */}
         <Image
           src="/images/modern-carpentry-workshop.png"
-          alt="Modern carpentry workshop"
+          alt="Taller de carpintería y mueblería en Santiago - El Maestro del Mueble"
           fill
+          sizes="100vw"
           className="object-cover z-0"
           priority
         />
@@ -281,8 +282,9 @@ export default function HomePage() {
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
                       src={service.image || "/placeholder.svg"}
-                      alt={service.title}
+                      alt={`Servicio de ${service.title} - El Maestro del Mueble`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     {/* Optional: a subtle gradient overlay on the image */}
@@ -339,8 +341,9 @@ export default function HomePage() {
                 >
                   <Image
                     src={galleryImages[currentSlide].src || "/placeholder.svg"}
-                    alt={galleryImages[currentSlide].alt}
+                    alt={`Proyecto destacado: ${galleryImages[currentSlide].title} en ${galleryImages[currentSlide].location}`}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 1200px"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -363,12 +366,14 @@ export default function HomePage() {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
+              aria-label="Ver imagen anterior"
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
             </button>
             <button
               onClick={nextSlide}
+              aria-label="Ver imagen siguiente"
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
             >
               <ChevronRight className="w-6 h-6 text-white" />
@@ -380,6 +385,7 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
+                  aria-label={`Ver imagen ${index + 1}`}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide ? "bg-orange-500 w-8" : "bg-white/30 hover:bg-white/50"
                   }`}
@@ -488,6 +494,7 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
+                  aria-label={`Ver testimonio de ${testimonials[index].name}`}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentTestimonial ? "bg-orange-500 w-8" : "bg-gray-300 hover:bg-gray-400"
                   }`}

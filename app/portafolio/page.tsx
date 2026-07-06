@@ -7,17 +7,28 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Eye, Calendar, MapPin } from "lucide-react"
+import JsonLd from "@/app/schema"
 
 export default function PortafolioPage() {
   const [selectedCategory, setSelectedCategory] = useState("todos")
+
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Portafolio de Muebles a Medida - El Maestro del Mueble",
+    "description": "Galería de proyectos reales de cocinas, closets, baños y muebles a medida fabricados en Santiago de Chile.",
+    "url": "https://www.maestrodelmueble.cl/portafolio"
+  }
 
   const categories = [
     { id: "todos", label: "Todos los Proyectos" },
     { id: "cocinas", label: "Cocinas" },
     { id: "closets", label: "Closets" },
     { id: "muebles", label: "Muebles a Medida" },
+    { id: "banos", label: "Baños" },
     { id: "restauracion", label: "Restauración" },
   ]
+
 
   const projects = [
     {
@@ -277,6 +288,172 @@ export default function PortafolioPage() {
       ],
       features: ["Diseño comercial", "Madera natural", "Funcionalidad", "Estilo moderno"],
     },
+    {
+      id: 20,
+      title: "Cocina Integral Melamina Negra",
+      category: "cocinas",
+      location: "Ñuñoa, Santiago",
+      date: "Abril 2024",
+      description:
+        "Moderna cocina integral fabricada con melamina negra mate de alta resistencia, tiradores perfil oculto y herrajes de cierre suave para un acabado elegante.",
+      image: "/images/cocina-integral-melamina-negra-1.jpeg",
+      gallery: [
+        "/images/cocina-integral-melamina-negra-1.jpeg",
+        "/images/cocina-integral-melamina-negra-2.jpeg"
+      ],
+      features: ["Melamina negra mate", "Tiradores perfil oculto", "Cubierta resistente", "Cierre suave"],
+    },
+    {
+      id: 21,
+      title: "Cocina con Isla y Cubierta de Cuarzo",
+      category: "cocinas",
+      location: "Las Condes, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Espaciosa cocina equipada con una isla central y cubiertas de cuarzo blanco brillante, ofreciendo una superficie amplia, higiénica y duradera.",
+      image: "/images/cocina-isla-cubierta-cuarzo-1.jpeg",
+      gallery: [
+        "/images/cocina-isla-cubierta-cuarzo-1.jpeg",
+        "/images/cocina-isla-cubierta-cuarzo-2.jpeg"
+      ],
+      features: ["Isla central amplia", "Cubierta de cuarzo blanco", "Gabinetes integrados", "Luz LED funcional"],
+    },
+    {
+      id: 22,
+      title: "Mueble Aéreo de Cocina en Roble",
+      category: "cocinas",
+      location: "Lo Barnechea, Santiago",
+      date: "Junio 2024",
+      description:
+        "Muebles aéreos de cocina fabricados en madera sólida de roble natural, combinando calidez rústica con un diseño funcional de fácil acceso.",
+      image: "/images/mueble-cocina-aereo-roble-1.jpeg",
+      gallery: [
+        "/images/mueble-cocina-aereo-roble-1.jpeg",
+        "/images/mueble-cocina-aereo-roble-2.jpeg"
+      ],
+      features: ["Madera de roble natural", "Gran espacio superior", "Terminación hidrófuga", "Diseño rústico moderno"],
+    },
+    {
+      id: 23,
+      title: "Closet de Dormitorio en Melamina",
+      category: "closets",
+      location: "Santiago Centro",
+      date: "Marzo 2024",
+      description:
+        "Closet empotrado diseñado a medida en melamina de alta densidad, optimizando el espacio con cajoneras, zapateros y barras reforzadas.",
+      image: "/images/closet-dormitorio-melamina-1.jpeg",
+      gallery: [
+        "/images/closet-dormitorio-melamina-1.jpeg",
+        "/images/closet-dormitorio-melamina-2.jpeg"
+      ],
+      features: ["Divisiones funcionales", "Cajoneras reforzadas", "Barras cromadas", "Color melamina texturizada"],
+    },
+    {
+      id: 24,
+      title: "Walk-In Closet con Iluminación LED",
+      category: "closets",
+      location: "La Reina, Santiago",
+      date: "Mayo 2024",
+      description:
+        "Elegante vestidor o walk-in closet sin puertas, con estructura autoportante y sistema de iluminación LED indirecta para una óptima visualización.",
+      image: "/images/walkin-closet-vestidor-led-1.jpeg",
+      gallery: [
+        "/images/walkin-closet-vestidor-led-1.jpeg",
+        "/images/walkin-closet-vestidor-led-2.jpeg"
+      ],
+      features: ["Iluminación LED indirecta", "Estructura abierta", "Repisas ajustables", "Zapateros dedicados"],
+    },
+    {
+      id: 25,
+      title: "Mueble de Baño con Espejo LED",
+      category: "banos",
+      location: "Vitacura, Santiago",
+      date: "Junio 2024",
+      description:
+        "Vanitorio de baño a medida con cajones de gran capacidad y un espejo retroiluminado con luces LED para crear un ambiente moderno.",
+      image: "/images/mueble-bano-espejo-led-1.jpeg",
+      gallery: [
+        "/images/mueble-bano-espejo-led-1.jpeg",
+        "/images/mueble-bano-espejo-led-2.jpeg"
+      ],
+      features: ["Espejo con luz LED integrada", "Apto para humedad", "Lavamanos empotrado", "Tiradores minimalistas"],
+    },
+    {
+      id: 26,
+      title: "Vanitorio Suspendido de Baño",
+      category: "banos",
+      location: "Providencia, Santiago",
+      date: "Julio 2024",
+      description:
+        "Vanitorio flotante o suspendido para baño principal, fabricado en madera nativa protegida contra la humedad y con cajoneras ocultas.",
+      image: "/images/vanitorio-bano-suspendido-1.jpeg",
+      gallery: [
+        "/images/vanitorio-bano-suspendido-1.jpeg",
+        "/images/vanitorio-bano-suspendido-2.jpeg"
+      ],
+      features: ["Diseño flotante suspendido", "Madera nativa protegida", "Cajoneras amplias", "Fácil limpieza inferior"],
+    },
+    {
+      id: 27,
+      title: "Rack de TV Living Diseño",
+      category: "muebles",
+      location: "Macul, Santiago",
+      date: "Abril 2024",
+      description:
+        "Mueble modular para centro de entretenimiento, que combina paneles de madera clara con gabinetes gris cemento y repisas iluminadas con LED.",
+      image: "/images/rack-tv-living-diseno-1.jpeg",
+      gallery: [
+        "/images/rack-tv-living-diseno-1.jpeg",
+        "/images/rack-tv-living-diseno-2.jpeg"
+      ],
+      features: ["Paneles de madera clara", "Iluminación LED integrada", "Gabinetes gris cemento", "Gestión de cables oculta"],
+    },
+    {
+      id: 28,
+      title: "Mueble Bar con Cava Iluminada",
+      category: "muebles",
+      location: "La Florida, Santiago",
+      date: "Junio 2024",
+      description:
+        "Imponente mueble bar para living con compartimentos para copas, botelleros y una cava de vinos iluminada que resalta los detalles del acabado.",
+      image: "/images/mueble-bar-cava-iluminada-1.jpeg",
+      gallery: [
+        "/images/mueble-bar-cava-iluminada-1.jpeg",
+        "/images/mueble-bar-cava-iluminada-2.jpeg"
+      ],
+      features: ["Cava retroiluminada", "Soportes para copas", "Detalles en madera rústica", "Puertas de vidrio"],
+    },
+    {
+      id: 29,
+      title: "Mesa de Comedor en Madera Nativa",
+      category: "muebles",
+      location: "Peñalolén, Santiago",
+      date: "Enero 2024",
+      description:
+        "Mesa de comedor de gran tamaño confeccionada con tablones sólidos de madera nativa seleccionada y patas metálicas robustas con terminación industrial.",
+      image: "/images/mesa-comedor-madera-nativa-1.jpeg",
+      gallery: [
+        "/images/mesa-comedor-madera-nativa-1.jpeg",
+        "/images/mesa-comedor-madera-nativa-2.jpeg",
+        "/images/mesa-comedor-madera-nativa-3.jpeg"
+      ],
+      features: ["Madera nativa sólida", "Terminación vitrificada", "Base metálica robusta", "Capacidad para 8 personas"],
+    },
+    {
+      id: 30,
+      title: "Escritorio Home Office",
+      category: "muebles",
+      location: "Las Condes, Santiago",
+      date: "Febrero 2024",
+      description:
+        "Estación de trabajo ergonómica para oficina en casa, combinando una cubierta resistente en tono madera y gabinetes organizadores en gris oscuro.",
+      image: "/images/escritorio-home-office-1.jpeg",
+      gallery: [
+        "/images/escritorio-home-office-1.jpeg",
+        "/images/escritorio-home-office-2.jpeg"
+      ],
+      features: ["Cubierta resistente", "Cajoneras organizadoras", "Diseño ergonómico", "Estructura reforzada"],
+    },
   ]
 
   const filteredProjects =
@@ -284,10 +461,11 @@ export default function PortafolioPage() {
 
   return (
     <main>
+      <JsonLd data={gallerySchema} />
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nuestro Portafolio</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Portafolio de Muebles a Medida en Santiago</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Descubre algunos de nuestros proyectos más destacados y la calidad que caracteriza cada uno de nuestros
             trabajos.
@@ -325,9 +503,10 @@ export default function PortafolioPage() {
                 <div className="relative">
                   <Image
                     src={project.image || "/placeholder.svg"}
-                    alt={project.title}
+                    alt={`Proyecto de mueblería: ${project.title} en Santiago - El Maestro del Mueble`}
                     width={600}
                     height={400}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-64 object-cover"
                   />
                   <div className="absolute top-4 left-4">
@@ -381,9 +560,10 @@ export default function PortafolioPage() {
                               <Image
                                 key={index}
                                 src={image || "/placeholder.svg"}
-                                alt={`${project.title} - Imagen ${index + 1}`}
+                                alt={`Detalle de ${project.title} - Foto ${index + 1} - El Maestro del Mueble`}
                                 width={600}
                                 height={400}
+                                sizes="(max-width: 768px) 100vw, 400px"
                                 className="w-full h-48 object-cover rounded-lg"
                               />
                             ))}

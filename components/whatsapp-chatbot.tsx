@@ -86,6 +86,7 @@ export default function WhatsAppChatbot() {
       {/* Floating Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Abrir chat de soporte por WhatsApp"
         className="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 relative"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}

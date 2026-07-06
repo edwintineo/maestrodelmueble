@@ -68,7 +68,7 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { name: "Facebook", icon: <Facebook className="w-5 h-5" />, href: "#", color: "hover:text-blue-500" },
+    { name: "Facebook", icon: <Facebook className="w-5 h-5" />, href: "https://www.facebook.com/share/1SypW3Waxq/", color: "hover:text-blue-500" },
     { name: "Instagram", icon: <Instagram className="w-5 h-5" />, href: "#", color: "hover:text-pink-500" },
   ]
 
@@ -136,6 +136,9 @@ export default function Footer() {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target={social.href.startsWith("http") ? "_blank" : undefined}
+                    rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={`Visitar nuestro perfil de ${social.name} de El Maestro del Mueble`}
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 transition-colors ${social.color} hover:bg-gray-700`}
@@ -275,6 +278,7 @@ export default function Footer() {
       {/* Scroll to Top Button */}
       <motion.button
         onClick={scrollToTop}
+        aria-label="Volver al inicio de la página"
         className="fixed bottom-16 left-8 w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: showScrollButton ? 1 : 0, y: showScrollButton ? 0 : 20 }}

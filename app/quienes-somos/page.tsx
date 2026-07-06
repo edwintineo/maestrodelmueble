@@ -3,8 +3,30 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Award, Users, Clock, Shield, Heart, Target } from 'lucide-react'
 import Link from "next/link"
+import type { Metadata } from "next"
+import JsonLd from "@/app/schema"
+
+export const metadata: Metadata = {
+  title: "Quiénes Somos | Mueblería Artesanal con 15+ Años en Santiago - El Maestro del Mueble",
+  description: "Conoce la historia, valores y equipo de El Maestro del Mueble. Más de 15 años diseñando y fabricando muebles de madera a medida en Santiago.",
+  alternates: {
+    canonical: "/quienes-somos",
+  },
+}
 
 export default function QuienesSomosPage() {
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Quiénes Somos - El Maestro del Mueble",
+    "description": "Conoce la historia, valores y equipo de El Maestro del Mueble. Más de 15 años diseñando y fabricando muebles de madera a medida en Santiago.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "El Maestro del Mueble",
+      "url": "https://www.maestrodelmueble.cl"
+    }
+  }
+
 const values = [
   {
     icon: <Heart className="w-8 h-8" />,
@@ -82,10 +104,11 @@ const milestones = [
 
 return (
   <main>
+    <JsonLd data={aboutPageSchema} />
     {/* Hero Section */}
     <section className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
       <div className="container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Quiénes Somos</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">Quiénes Somos — Mueblería Artesanal en Santiago</h1>
         <p className="text-xl max-w-3xl mx-auto">
           Somos una empresa familiar dedicada a crear muebles únicos y funcionales con más de 15 años de experiencia
           en el rubro de la mueblería.
