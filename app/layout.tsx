@@ -14,6 +14,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.maestrodelmueble.cl"),
+  icons: {
+    icon: "/images/cropped-El-Mestro-del-Mueble-Isotipo.png",
+    apple: "/images/cropped-El-Mestro-del-Mueble-Isotipo.png",
+  },
   title: "El Maestro del Mueble - Mueblista en Santiago",
   description: "Servicio profesional de mueblería en Santiago. Especialistas en cocinas, closets y muebles a medida con 15+ años de trayectoria.",
   keywords: [
