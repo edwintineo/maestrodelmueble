@@ -9,6 +9,106 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Eye, Calendar, MapPin } from "lucide-react"
 import JsonLd from "@/app/schema"
 
+function ProjectDialog({ project, categories }: { project: any; categories: any }) {
+  const [activeImage, setActiveImage] = useState(project.image)
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="w-full">
+          <Eye className="w-4 h-4 mr-2" />
+          Ver Detalles
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white text-gray-900 border border-gray-200 shadow-2xl p-6 rounded-xl dark:bg-gray-950 dark:text-gray-50 dark:border-gray-800">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</DialogTitle>
+        </DialogHeader>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-4">
+          {/* Columna Izquierda: Imagen Principal y Miniaturas */}
+          <div className="space-y-4">
+            <div className="relative h-72 md:h-96 w-full rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 bg-gray-50">
+              <Image
+                src={activeImage || "/placeholder.svg"}
+                alt={`Imagen principal de ${project.title}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 450px"
+                className="object-cover"
+              />
+            </div>
+            {project.gallery.length > 1 && (
+              <div className="flex flex-wrap gap-2">
+                {project.gallery.map((img: string, idx: number) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveImage(img)}
+                    className={`relative w-20 h-16 rounded-md overflow-hidden border-2 transition-all ${
+                      activeImage === img ? "border-orange-500 scale-105" : "border-transparent hover:border-gray-300"
+                    }`}
+                  >
+                    <Image
+                      src={img}
+                      alt={`Miniatura ${idx + 1}`}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Columna Derecha: Detalles del Proyecto */}
+          <div className="flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                <div className="flex items-center">
+                  <MapPin className="w-4 h-4 mr-1 text-orange-500" />
+                  <span>{project.location}</span>
+                </div>
+                <div className="flex items-center">
+                  <Calendar className="w-4 h-4 mr-1 text-orange-500" />
+                  <span>{project.date}</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Descripción del Trabajo:</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{project.description}</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Especificaciones y Acabados:</h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {project.features.map((feature: string, idx: number) => (
+                    <li key={idx} className="text-gray-600 dark:text-gray-400 text-xs flex items-center">
+                      <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 flex-shrink-0"></div>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
+              <Badge variant="secondary" className="bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300">
+                {categories.find((cat: any) => cat.id === project.category)?.label}
+              </Badge>
+              <Button size="sm" asChild>
+                <a href="/contacto" className="text-xs">
+                  Cotizar Similar
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 export default function PortafolioPage() {
   const [selectedCategory, setSelectedCategory] = useState("todos")
 
@@ -932,66 +1032,7 @@ export default function PortafolioPage() {
                     )}
                   </div>
 
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="w-full">
-                        <Eye className="w-4 h-4 mr-2" />
-                        Ver Detalles
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle className="text-2xl">{project.title}</DialogTitle>
-                      </DialogHeader>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <div className="grid grid-cols-1 gap-4 mb-4">
-                            {project.gallery.map((image, index) => (
-                              <Image
-                                key={index}
-                                src={image || "/placeholder.svg"}
-                                alt={`Detalle de ${project.title} - Foto ${index + 1} - El Maestro del Mueble`}
-                                width={600}
-                                height={400}
-                                sizes="(max-width: 768px) 100vw, 400px"
-                                className="w-full h-48 object-cover rounded-lg"
-                              />
-                            ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="mb-4">
-                            <h4 className="font-semibold mb-2">Ubicación:</h4>
-                            <p className="text-gray-600">{project.location}</p>
-                          </div>
-
-                          <div className="mb-4">
-                            <h4 className="font-semibold mb-2">Fecha de Finalización:</h4>
-                            <p className="text-gray-600">{project.date}</p>
-                          </div>
-
-                          <div className="mb-4">
-                            <h4 className="font-semibold mb-2">Descripción:</h4>
-                            <p className="text-gray-600">{project.description}</p>
-                          </div>
-
-                          <div className="mb-4">
-                            <h4 className="font-semibold mb-2">Características:</h4>
-                            <ul className="space-y-1">
-                              {project.features.map((feature, index) => (
-                                <li key={index} className="text-gray-600 flex items-center">
-                                  <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                                  {feature}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                  <ProjectDialog project={project} categories={categories} />
                 </CardContent>
               </Card>
             ))}
