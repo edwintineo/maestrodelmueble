@@ -144,9 +144,9 @@ export default function PortafolioPage() {
       "Melamina premium",
       "Tiradores perfil gola"
     ],
-    "image": "/images/cocina-minimalista.jpg",
+    "image": "/images/COCINA-MODERNA-GRIS.jpeg",
     "gallery": [
-      "/images/cocina-minimalista.jpg"
+      "/images/COCINA-MODERNA-GRIS.jpeg"
     ]
   },
   {
@@ -162,9 +162,9 @@ export default function PortafolioPage() {
       "Luz LED",
       "Zapateros"
     ],
-    "image": "/images/closet-melamina.jpg",
+    "image": "/images/walkin-closet-vestidor-led-1.jpeg",
     "gallery": [
-      "/images/closet-melamina.jpg"
+      "/images/walkin-closet-vestidor-led-1.jpeg"
     ]
   },
   {
@@ -180,9 +180,9 @@ export default function PortafolioPage() {
       "Terminación vitrificada",
       "Diseño rústico"
     ],
-    "image": "/images/mesa-rustica.jpg",
+    "image": "/images/MESA-REDONDA-MADERA.jpeg",
     "gallery": [
-      "/images/mesa-rustica.jpg"
+      "/images/MESA-REDONDA-MADERA.jpeg"
     ]
   },
   {
@@ -198,9 +198,9 @@ export default function PortafolioPage() {
       "Laca atóxica",
       "Funcional"
     ],
-    "image": "/images/cama-nido.jpg",
+    "image": "/images/cama-funcional-infantil-cajoneras.jpeg",
     "gallery": [
-      "/images/cama-nido.jpg"
+      "/images/cama-funcional-infantil-cajoneras.jpeg"
     ]
   },
   {
@@ -216,9 +216,9 @@ export default function PortafolioPage() {
       "Cuarzo",
       "Baño"
     ],
-    "image": "/images/vanitorio-flotante.jpg",
+    "image": "/images/vanitorio-bano-suspendido-1.jpeg",
     "gallery": [
-      "/images/vanitorio-flotante.jpg"
+      "/images/vanitorio-bano-suspendido-1.jpeg"
     ]
   },
   {
@@ -234,9 +234,9 @@ export default function PortafolioPage() {
       "Granito natural",
       "Estilo campestre"
     ],
-    "image": "/images/cocina-rustica.jpg",
+    "image": "/images/COCINA-VERDE.jpeg",
     "gallery": [
-      "/images/cocina-rustica.jpg"
+      "/images/COCINA-VERDE.jpeg"
     ]
   },
   {
@@ -252,9 +252,9 @@ export default function PortafolioPage() {
       "Puertas batientes",
       "Pantalonero"
     ],
-    "image": "/images/closet-empacado.jpg",
+    "image": "/images/closet-grande-puertas-correderas.jpeg",
     "gallery": [
-      "/images/closet-empacado.jpg"
+      "/images/closet-grande-puertas-correderas.jpeg"
     ]
   },
   {
@@ -270,9 +270,9 @@ export default function PortafolioPage() {
       "Pasacables",
       "Diseño compacto"
     ],
-    "image": "/images/escritorio-home.jpg",
+    "image": "/images/escritorio-home-office-1.jpeg",
     "gallery": [
-      "/images/escritorio-home.jpg"
+      "/images/escritorio-home-office-1.jpeg"
     ]
   },
   {
@@ -288,9 +288,9 @@ export default function PortafolioPage() {
       "Estilo industrial",
       "Living"
     ],
-    "image": "/images/mesa-industrial.jpg",
+    "image": "/images/mesa-centro-living-1.jpeg",
     "gallery": [
-      "/images/mesa-industrial.jpg"
+      "/images/mesa-centro-living-1.jpeg"
     ]
   },
   {
@@ -306,9 +306,9 @@ export default function PortafolioPage() {
       "Decoración",
       "Melamina premium"
     ],
-    "image": "/images/repisa-flotante.jpg",
+    "image": "/images/panel-listones-madera-repisa.jpeg",
     "gallery": [
-      "/images/repisa-flotante.jpg"
+      "/images/panel-listones-madera-repisa.jpeg"
     ]
   },
   {
@@ -324,9 +324,9 @@ export default function PortafolioPage() {
       "Isla central",
       "Cocina familiar"
     ],
-    "image": "/images/cocina-isla.jpg",
+    "image": "/images/cocina-isla-cubierta-cuarzo-1.jpeg",
     "gallery": [
-      "/images/cocina-isla.jpg"
+      "/images/cocina-isla-cubierta-cuarzo-1.jpeg"
     ]
   },
   {
@@ -342,9 +342,9 @@ export default function PortafolioPage() {
       "Tallado a mano",
       "Cola de milano"
     ],
-    "image": "/images/closet-madera.jpg",
+    "image": "/images/CLOSET-OSCURO.jpeg",
     "gallery": [
-      "/images/closet-madera.jpg"
+      "/images/CLOSET-OSCURO.jpeg"
     ]
   },
   {
@@ -360,9 +360,9 @@ export default function PortafolioPage() {
       "Melamina texturada",
       "Diseño inteligente"
     ],
-    "image": "/images/mesa-extensible.jpg",
+    "image": "/images/mesa-comedor-madera-nativa-1.jpeg",
     "gallery": [
-      "/images/mesa-extensible.jpg"
+      "/images/mesa-comedor-madera-nativa-1.jpeg"
     ]
   },
   {
@@ -378,9 +378,9 @@ export default function PortafolioPage() {
       "Cajonera integrada",
       "Melamina premium"
     ],
-    "image": "/images/cama-funcional.jpg",
+    "image": "/images/lockers-madera-puertas-blancas.jpeg",
     "gallery": [
-      "/images/cama-funcional.jpg"
+      "/images/lockers-madera-puertas-blancas.jpeg"
     ]
   },
   {
@@ -396,9 +396,9 @@ export default function PortafolioPage() {
       "Resistente a la humedad",
       "Gris antracita"
     ],
-    "image": "/images/vanitorio-marmol.jpg",
+    "image": "/images/vanitorio-bano-suspendido-2.jpeg",
     "gallery": [
-      "/images/vanitorio-marmol.jpg"
+      "/images/vanitorio-bano-suspendido-2.jpeg"
     ]
   },
   {
@@ -414,9 +414,9 @@ export default function PortafolioPage() {
       "Empotrado",
       "Melamina roble"
     ],
-    "image": "/images/cocina-lineal.jpg",
+    "image": "/images/MUEBLE-COCINA-4.jpeg",
     "gallery": [
-      "/images/cocina-lineal.jpg"
+      "/images/MUEBLE-COCINA-4.jpeg"
     ]
   },
   {
@@ -432,9 +432,9 @@ export default function PortafolioPage() {
       "Herraje nacional",
       "Espacio eficiente"
     ],
-    "image": "/images/closet-zapatero.jpg",
+    "image": "/images/closet-vestidor-abierto-industrial.jpeg",
     "gallery": [
-      "/images/closet-zapatero.jpg"
+      "/images/closet-vestidor-abierto-industrial.jpeg"
     ]
   },
   {
@@ -450,9 +450,9 @@ export default function PortafolioPage() {
       "Riel telescópico",
       "Funcional"
     ],
-    "image": "/images/mesa-cajones.jpg",
+    "image": "/images/mesa-centro-living-2.jpeg",
     "gallery": [
-      "/images/mesa-cajones.jpg"
+      "/images/mesa-centro-living-2.jpeg"
     ]
   },
   {
@@ -468,9 +468,9 @@ export default function PortafolioPage() {
       "Decoración",
       "Melamina premium"
     ],
-    "image": "/images/repisa-hexagonal.jpg",
+    "image": "/images/MUEBLE-MODULAR.jpeg",
     "gallery": [
-      "/images/repisa-hexagonal.jpg"
+      "/images/MUEBLE-MODULAR.jpeg"
     ]
   },
   {
